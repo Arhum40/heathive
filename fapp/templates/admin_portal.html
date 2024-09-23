@@ -1,0 +1,60 @@
+{% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome to the Admin Portal, {{ user.username }}.</p>
+    
+    <h2>Pending Campaigns</h2>
+    <ul>
+        {% for campaign in campaigns %}
+            <li>
+                <strong>{{ campaign.title }}</strong> - Status: {{ campaign.status }}
+                <a href="{% url 'admin_campaign_approve' campaign.id %}">Approve</a>
+            </li>
+        {% empty %}
+            <li>No pending campaigns for approval.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome to the Admin Portal, {{ user.username }}.</p>
+    
+    <!-- Display all campaigns with their status -->
+    <h2>All Campaigns</h2>
+    <ul>
+        {% for campaign in campaigns %}
+            <li>{{ campaign.title }} - Status: {{ campaign.status }}</li>
+        {% empty %}
+            <li>No campaigns available.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %} {% endcomment %}
+
+
+
+
+
+{% comment %} {% extends 'base_admin.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome to the Admin Portal, {{ user.username }}.</p>
+    <!-- Admin-specific content -->
+</div>
+{% endblock %} {% endcomment %}

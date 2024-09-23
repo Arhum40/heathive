@@ -1,0 +1,17 @@
+{% extends 'base_fundraiser.html' %}
+{% block content %}
+  <h2>Your Campaigns</h2>
+  <ul>
+    {% for campaign in campaigns %}
+      <li>{{ campaign.title }} - {{ campaign.status }}</li>
+      <a href="{% url 'campaign_detail' campaign.id %}">View Details</a>
+
+      
+      
+    {% empty %}
+      <li>No campaigns yet.</li>
+      <a href="{% url 'create_campaign' %}" class="btn btn-primary">Create Campaign</a>
+    {% endfor %}
+  </ul>
+  
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Active Campaigns</h2>
+  <ul>
+    {% for campaign in campaigns %}
+      <li>{{ campaign.title }} - {{ campaign.category_id }} (Target: {{ campaign.target_amount }})
+        {{ campaign.image }} 
+        {% if user.is_authenticated %}
+          <a href="{% url 'donate_to_campaign' campaign.pk %}">Donate</a>
+        {% else %}
+          <a href="{% url 'login' %}">Login to Donate</a>
+        {% endif %}
+      </li>
+    {% empty %}
+      <li>No active campaigns yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+{% comment %} {% extends 'base.html' %}
+{% block content %}
+  <h2>Active Campaigns</h2>
+  <ul>
+    {% for campaign in campaigns %}
+      <li>{{ campaign.title }} - {{ campaign.category_id }} (Target: {{ campaign.target_amount }})
+        {{ campaign.image }} <a href="{% url 'donate_to_campaign' campaign.pk %}">Donate</a>
+      </li>
+    {% empty %}
+      <li>No active campaigns yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}  {% endcomment %}
+
